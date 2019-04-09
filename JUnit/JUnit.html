@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h2>
+		<b><i>JUnit</i></b>
+	</h2>
+	<p>
+	<ul>
+		<li><strong>Assertions</strong> – JUnit provides overloaded
+			assertion methods for all primitive types and Objects and arrays (of
+			primitives or Objects). The parameter order is expected value
+			followed by actual value. <a href="code/AssertTests.java">Assertion
+				Example </a></li>
+		<br>
+		<li><strong>Test Runners</strong>
+			<ul>
+				<li><strong>Graphical and console based runners</strong>–
+					NetBeans, Eclipse and IntelliJ IDEA have native graphical test
+					runners built in.To run tests and see the results on the console,
+					below mentioned code can be used :<br>
+					org.junit.runner.JUnitCore.runClasses(TestClass1.class, ...);<br>
+					From the command line below mentioned command can be executed:<br>java
+					org.junit.runner.JUnitCore TestClass1 [...other test classes...]<br>
+					<a href="code/CalculateRunner.java">Test Runner Example </a></li>
+				<br>
+				<li><strong>@RunWith Annotation</strong> – When a class is
+					annotated with @RunWith or extends a class annotated with @RunWith,
+					JUnit will invoke the class it references to run the tests in that
+					class instead of the runner built into JUnit. <a
+					href="code/RunWithExample.java">@RunWith Example </a></li>
+				<br>
+				<li><strong>Specialized Runners</strong>
+					<ul>
+						<li>Suite–Suite is a standard runner which allows you to
+							manually build a suite of test classes. <a
+							href="code/RunWithExample.java">Suite Example </a>
+						</li>
+						<li>Parameterized–Suite is a standard runner which allows you
+							to manually build a suite of test classes. <a
+							href="code/FibonacciTest.java">Parameterized Example </a>
+						</li>
+						<li>Categories–You can specify groups of tests to be excluded
+							or included by using the Categories runner. Once you have
+							annotated certain methods with @Category(MyCategory.class), you
+							can use the --filter option to restrict which tests will be run.
+							<a href="code/...">Categories Example </a>
+						</li>
+					</ul></li>
+				<li><strong>Experimental Runners</strong> Enclosed - If you put
+					tests in inner classes, Ant, for example, won't find them. By
+					running the outer class with Enclosed, the tests in the inner
+					classes will be run. You might put tests in inner classes to group
+					them for convenience or to share constants <a href="code/...">Enclosed
+						Example </a></li>
+				<br>
+				<li><strong>Third Party Runners</strong> -Some popular third
+					party implementations of runners for use with @RunWith
+					include:SpringJUnitForClass, MockitoJUnitRunner etc.</li>
+				<br>
+			</ul></li>
+		<li><strong>Test Execution Order</strong> – By design, JUnit does
+			not specify the execution order of test method invocations.But some
+			of the test code might require ordering.JUnit by default uses
+			(MethodSorters.DEFAULT). To change the order, one can
+			use,@FixMethodOrder(MethodSorters.JVM),@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+			etc. <a href="code/TestMethodOrder.java">Execution Order Example
+		</a></li>
+		<br>
+		<li><strong>Exception Testing</strong>
+			<ul>
+				<li>Expected Exceptions–The @Test annotation has an optional
+					parameter "expected" that takes as values subclasses of
+					Throwable.It can be used as shown in the example.The expected
+					parameter should be used with care. The above test will pass if any
+					code in the method throws IndexOutOfBoundsException.<br> <a
+					href="code/ExpectedExceptionTest.java">Example </a>
+				</li>
+				<li>Try/Catch Idiom - To test the value of the message in the
+					exception, or the state of a domain object after the exception has
+					been thrown we can use this. <a href="code/TryCatchExample.java">TryCatchExample
+				</a>
+				</li>
+				<br>
+				<li>ExpectedException Rule - This rule lets you indicate not
+					only what exception you are expecting, but also the exception
+					message you are expecting. <a
+					href="code/ExpectedExceptionExample.java">Expected Exception
+						Example </a>
+				</li>
+				<br>
+			</ul></li>
+		<li><strong>Matchers and assertThat</strong> - Joe Walnes built a
+			new assertion mechanism which was the method assertThat. The
+			advantages of using this syntax are : more readable and typeable
+			code,statements can be negated, combined, customized and mapped to a
+			collection. <a href="code/AssertTests.java"> Example </a></li>
+		<br>
+		<li><strong>Ignoring a Test</strong> - To ignore a test in JUnit
+			you can either comment a method, or delete the @Test annotation; but
+			the test runner will not report such a test. Alternatively, you can
+			add the @Ignore annotation in front or after @Test. Test runners will
+			report the number of ignored tests, along with the number of tests
+			that ran and the number of tests that failed. <a
+			href="code/IgnoreTestExample.java"> IgnoreTestExample </a></li>
+		<br>
+		<li><strong>Timeout for tests</strong> -Tests that 'runaway' or
+			take too long, can be automatically failed. There are two options for
+			implementing this behavior: Timeout parameter on @Test Annotation
+			(applies to test method) and Timeout Rule (applies to all test cases
+			in the test class). These are shown in examples.<a
+			href="code/TimeoutParamExample.java"> Timeout Parameter Example </a><a
+			href="code/HasGlobalTimeout.java"> Timeout Rule Example </a></li>
+		<br>
+				<li><strong>Assumptions with assume</strong> -Tests that 'runaway' or
+			take too long, can be automatically failed. There are two options for
+			implementing this behavior: Timeout parameter on @Test Annotation
+			(applies to test method) and Timeout Rule (applies to all test cases
+			in the test class). These are shown in examples.<a
+			href="code/TimeoutParamExample.java"> Timeout Parameter Example </a><a
+			href="code/HasGlobalTimeout.java"> Timeout Rule Example </a></li>
+		<br>
+	</ul>
+	</p>
+</body>
+</html>
